@@ -55,6 +55,10 @@ public class ModifierArticle {
     private TextField descFieldTextField = new TextField();
     private TextField texteTextField = new TextField();
     private Picker typeArticlePicker = new Picker();
+    
+    public void setPickerDefault(String typeArticle){
+        typeArticlePicker.setSelectedString(typeArticle);
+    }
 
     public ModifierArticle() {
         //Navigation

@@ -41,6 +41,10 @@ public class MoezUtils {
         return getUserMoezConnecte();
     }
 
+    public static String getTypeUserConnecte() {
+        return "ROLE_EMPLOYEUR";
+    }
+
     public static String raccourcirString(String s) {
         if (s.length() > 30) {
             s = s.substring(0, 10) + "...";

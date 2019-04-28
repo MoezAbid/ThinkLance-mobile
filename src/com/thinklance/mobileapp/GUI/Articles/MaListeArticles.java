@@ -37,14 +37,14 @@ import java.text.SimpleDateFormat;
  * @author Moez
  */
 public class MaListeArticles {
-
+    
     private Form formListeArticles = new Form("Mes Articles", new BoxLayout(BoxLayout.Y_AXIS));
     private Container cnListe = new Container(new BoxLayout(BoxLayout.Y_AXIS));
     private ImageViewer imageViewer = null;
     private Image image;
     private EncodedImage enc;
     private ArticlesService artServ = new ArticlesService();
-
+    
     public MaListeArticles() {
         //Ajout du bouton d'ajout
         FloatingActionButton fabAjout = FloatingActionButton.createFAB(FontImage.MATERIAL_ADD);
@@ -70,7 +70,7 @@ public class MaListeArticles {
                 listeArticles.getFormListeArticles().show();
             }
         });
-
+        
         formListeArticles.getToolbar().addCommandToSideMenu("Mes Articles", null, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -78,7 +78,7 @@ public class MaListeArticles {
                 maListeArticles.getFormMaListeArticles().show();
             }
         });
-
+        
         formListeArticles.getToolbar().addCommandToSideMenu("Paiements", null, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -86,15 +86,15 @@ public class MaListeArticles {
             }
         });
     }
-
+    
     public Form getFormMaListeArticles() {
         return formListeArticles;
     }
-
+    
     public void setFormMaListeArticles(Form formMaListeArticles) {
         this.formListeArticles = formMaListeArticles;
     }
-
+    
     private void afficherDonnees() {
         cnListe.removeAll();
         ArticlesService artServ = new ArticlesService();
@@ -191,7 +191,7 @@ public class MaListeArticles {
                             listeArticles.getFormListeArticles().show();
                         }
                     });
-
+                    
                     formLireArticle.getToolbar().addCommandToSideMenu("Mes Articles", null, new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
@@ -199,7 +199,7 @@ public class MaListeArticles {
                             maListeArticles.getFormMaListeArticles().show();
                         }
                     });
-
+                    
                     formLireArticle.getToolbar().addCommandToSideMenu("Paiements", null, new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
@@ -224,7 +224,8 @@ public class MaListeArticles {
                     modifArtc.setTitreTextField(art.getTitre());
                     modifArtc.setPhotoArticleUrl(art.getPhotoArticle());
                     modifArtc.setImagePreview(art.getPhotoArticle());
-                    modifArtc.getFormModifierArticle().show();;
+                    modifArtc.getFormModifierArticle().show();
+                    modifArtc.setPickerDefault(artServ.getTypeArticle(art.getType()));
                 }
             });
             //Bouton supprimer traitement
