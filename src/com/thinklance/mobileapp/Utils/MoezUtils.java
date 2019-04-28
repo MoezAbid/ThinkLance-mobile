@@ -5,6 +5,15 @@
  */
 package com.thinklance.mobileapp.Utils;
 
+import com.codename1.io.ConnectionRequest;
+import com.codename1.io.NetworkEvent;
+import com.codename1.io.NetworkManager;
+import com.codename1.ui.events.ActionListener;
+import com.thinklance.mobileapp.Entities.Article;
+import com.thinklance.mobileapp.Services.Implementation.ArticlesService;
+import java.util.Date;
+import org.json.JSONException;
+
 /**
  *
  * @author Moez
@@ -12,6 +21,10 @@ package com.thinklance.mobileapp.Utils;
 public class MoezUtils {
 
     public static final String urlWebService = "http://127.0.0.1/ThinkLance/web/app_dev.php/";
+    public static final String urlPhotosArticle = "http://127.0.0.1/ThinkLance/web/";
+    public static final String staticUrlImageArticlePlaceHolder = "file:///C:/wamp64/www/ThinkLance/web/uploads/articlesPhotos/ImageArticlePlaceHolder.png";
+    private ArticlesService artServ = new ArticlesService();
+    private String nomUser = "";
 
     public MoezUtils() {
     }
@@ -20,11 +33,11 @@ public class MoezUtils {
         return urlWebService;
     }
 
-    public int getUserMoezConnecte() {
+    private static int getUserMoezConnecte() {
         return 14;
     }
 
-    public int getIdUserConnecte() {
+    public static int getIdUserConnecte() {
         return getUserMoezConnecte();
     }
 
@@ -35,9 +48,28 @@ public class MoezUtils {
         return s;
     }
 
-    public static String getNomUserForArticles(int idArticle) {
-        String nomUser = "";
-            
+    public String getNomUserForArticles(int idArticle) {
+        ConnectionRequest con = new ConnectionRequest();
+        con.setUrl(MoezUtils.urlWebService + "articles/article_api/" + idArticle);
+        con.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                String result = "";
+                String nomUserFromJson = "";
+                result = new String(con.getResponseData());
+                org.json.JSONObject jsonObject;
+                try {
+                    jsonObject = new org.json.JSONObject(result);
+                    //Auteur
+                    org.json.JSONObject auteurArticle = jsonObject.getJSONObject("utilisateur");
+                    nomUserFromJson = auteurArticle.getString("username");
+                    nomUser = nomUserFromJson;
+                } catch (JSONException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
         return nomUser;
     }
 }
