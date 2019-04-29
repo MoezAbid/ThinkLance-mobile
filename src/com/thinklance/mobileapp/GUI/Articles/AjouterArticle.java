@@ -30,6 +30,8 @@ import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.spinner.Picker;
 import com.codename1.ui.util.Resources;
 import com.thinklance.mobileapp.Entities.Article;
+import com.thinklance.mobileapp.GUI.Actualites.ListeActualites;
+import com.thinklance.mobileapp.GUI.Paiements.ListePaiements;
 import com.thinklance.mobileapp.Services.Implementation.ArticlesService;
 import com.thinklance.mobileapp.Utils.MoezUtils;
 import java.io.IOException;
@@ -79,9 +81,19 @@ public class AjouterArticle {
         formAjouterArticle.getToolbar().addCommandToSideMenu("Paiements", null, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                System.out.println("Paiements");
+                ListePaiements listePaiements = new ListePaiements();
+                listePaiements.getFormListePaiements().show();
             }
         });
+        
+        formAjouterArticle.getToolbar().addCommandToSideMenu("Actualites", null, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                ListeActualites listAcu = new ListeActualites();
+                listAcu.getFormListeActualites().show();
+            }
+        });
+        
         formAjouterArticle.getToolbar().addCommandToRightBar("Retour", null, e -> {
             ListeArticles lart = new ListeArticles();
             lart.getFormListeArticles().show();

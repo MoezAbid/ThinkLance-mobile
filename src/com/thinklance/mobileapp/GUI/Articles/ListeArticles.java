@@ -26,6 +26,8 @@ import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.thinklance.mobileapp.Entities.Article;
+import com.thinklance.mobileapp.GUI.Actualites.ListeActualites;
+import com.thinklance.mobileapp.GUI.Paiements.ListePaiements;
 import com.thinklance.mobileapp.Services.Implementation.ArticlesService;
 import com.thinklance.mobileapp.Utils.MoezUtils;
 import java.io.IOException;
@@ -81,7 +83,16 @@ public class ListeArticles {
         formListeArticles.getToolbar().addCommandToSideMenu("Paiements", null, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                System.out.println("Paiements");
+                ListePaiements listePaiements = new ListePaiements();
+                listePaiements.getFormListePaiements().show();
+            }
+        });
+        
+        formListeArticles.getToolbar().addCommandToSideMenu("Actualites", null, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                ListeActualites listAcu = new ListeActualites();
+                listAcu.getFormListeActualites().show();
             }
         });
 

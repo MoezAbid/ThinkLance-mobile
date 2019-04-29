@@ -28,6 +28,8 @@ import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.spinner.Picker;
 import com.codename1.ui.util.Resources;
 import com.thinklance.mobileapp.Entities.Article;
+import com.thinklance.mobileapp.GUI.Actualites.ListeActualites;
+import com.thinklance.mobileapp.GUI.Paiements.ListePaiements;
 import com.thinklance.mobileapp.Services.Implementation.ArticlesService;
 import com.thinklance.mobileapp.Utils.MoezUtils;
 import java.io.IOException;
@@ -55,8 +57,8 @@ public class ModifierArticle {
     private TextField descFieldTextField = new TextField();
     private TextField texteTextField = new TextField();
     private Picker typeArticlePicker = new Picker();
-    
-    public void setPickerDefault(String typeArticle){
+
+    public void setPickerDefault(String typeArticle) {
         typeArticlePicker.setSelectedString(typeArticle);
     }
 
@@ -81,7 +83,8 @@ public class ModifierArticle {
         formModifierArticle.getToolbar().addCommandToSideMenu("Paiements", null, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                System.out.println("Paiements");
+                ListePaiements listePaiements = new ListePaiements();
+                listePaiements.getFormListePaiements().show();
             }
         });
         formModifierArticle.getToolbar().addCommandToRightBar("Retour", null, e -> {
@@ -89,6 +92,15 @@ public class ModifierArticle {
             MaListeArticles mart = new MaListeArticles();
             mart.getFormMaListeArticles().show();
         });
+
+        formModifierArticle.getToolbar().addCommandToSideMenu("Actualites", null, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                ListeActualites listAcu = new ListeActualites();
+                listAcu.getFormListeActualites().show();
+            }
+        });
+
         //Bouton enregistrer
         FloatingActionButton fabAjout = FloatingActionButton.createFAB(FontImage.MATERIAL_SAVE);
         fabAjout.addActionListener(e -> {

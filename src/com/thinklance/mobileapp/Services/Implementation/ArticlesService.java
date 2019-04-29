@@ -63,7 +63,7 @@ public class ArticlesService implements IArticles {
                         //Date Article
                         JSONObject dateArticle = new JSONObject((Map) obj.get("dateHeure"));
                         int dateHeureInt = (int) Math.round((double) dateArticle.get("timestamp"));
-                        Date dateArticleDate = new Date(Long.parseLong(String.valueOf(dateHeureInt)));
+                        Date dateArticleDate = new Date(Long.parseLong(String.valueOf(dateHeureInt)) * 1000);
 
                         article.setId((int) id);
                         article.setDescription(obj.get("description").toString());
@@ -108,7 +108,7 @@ public class ArticlesService implements IArticles {
                     //Date Article
                     org.json.JSONObject dateArticle = jsonObject.getJSONObject("dateHeure");
                     int dateHeureInt = dateArticle.getInt("timestamp");
-                    Date dateArticleDate = new Date(Long.parseLong(String.valueOf(dateHeureInt)));
+                    Date dateArticleDate = new Date(Long.parseLong(String.valueOf(dateHeureInt)) * 1000);
 
                     articleSpecifique.setId((int) id);
                     articleSpecifique.setDescription(jsonObject.getString("description"));
@@ -262,7 +262,7 @@ public class ArticlesService implements IArticles {
                         //Date Article
                         //JSONObject dateArticle = new JSONObject((Map) obj.get("dateHeure"));
                         //int dateHeureInt = (int) Math.round((double) dateArticle.get("timestamp"));
-                        //Date dateArticleDate = new Date(Long.parseLong(String.valueOf(dateHeureInt)));
+                        //Date dateArticleDate = new Date(Long.parseLong(String.valueOf(dateHeureInt))* 1000);
 
                         article.setId((int) id);
                         article.setDescription(obj.get("description").toString());
@@ -310,7 +310,7 @@ public class ArticlesService implements IArticles {
                         //Date Article
                         JSONObject dateArticle = new JSONObject((Map) obj.get("dateHeure"));
                         int dateHeureInt = (int) Math.round((double) dateArticle.get("timestamp"));
-                        Date dateArticleDate = new Date(Long.parseLong(String.valueOf(dateHeureInt)));
+                        Date dateArticleDate = new Date(Long.parseLong(String.valueOf(dateHeureInt)) * 1000);
 
                         article.setId((int) id);
                         article.setDescription(obj.get("description").toString());

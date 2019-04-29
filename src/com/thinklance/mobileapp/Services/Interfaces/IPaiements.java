@@ -17,7 +17,7 @@ public interface IPaiements {
     //public void ajouterPaiement(Paiement nouveauPaiement);
     public void supprimerPaiement(String idPaiement);
 
-    public void rembourserPaiement(String idPaiement);
+    public void rembourserPaiement(String idPaiement, Paiement paiement);
 
     //public ArrayList<Paiement> getListePaiements();
     public Paiement getPaiementSpecifique(String idPaiement);

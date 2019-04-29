@@ -11,8 +11,10 @@ import com.codename1.ui.Label;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.FlowLayout;
+import com.thinklance.mobileapp.GUI.Actualites.ListeActualites;
 import com.thinklance.mobileapp.GUI.Articles.ListeArticles;
 import com.thinklance.mobileapp.GUI.Articles.MaListeArticles;
+import com.thinklance.mobileapp.GUI.Paiements.ListePaiements;
 
 /**
  *
@@ -43,7 +45,16 @@ public class PageAccueil {
         formAccueil.getToolbar().addCommandToSideMenu("Paiements", null, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                System.out.println("Paiements");
+                ListePaiements listePaiements = new ListePaiements();
+                listePaiements.getFormListePaiements().show();
+            }
+        });
+
+        formAccueil.getToolbar().addCommandToSideMenu("Actualites", null, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                ListeActualites listAcu = new ListeActualites();
+                listAcu.getFormListeActualites().show();
             }
         });
     }

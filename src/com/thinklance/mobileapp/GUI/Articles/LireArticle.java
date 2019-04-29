@@ -16,6 +16,7 @@ import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.thinklance.mobileapp.Entities.Article;
+import com.thinklance.mobileapp.GUI.Actualites.ListeActualites;
 import com.thinklance.mobileapp.Services.Implementation.ArticlesService;
 import com.thinklance.mobileapp.Utils.MoezUtils;
 import java.io.IOException;
@@ -53,6 +54,14 @@ public class LireArticle {
             public void actionPerformed(ActionEvent evt) {
                 MaListeArticles maListeArticles = new MaListeArticles();
                 maListeArticles.getFormMaListeArticles().show();
+            }
+        });
+        
+        formLireArticle.getToolbar().addCommandToSideMenu("Actualites", null, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                ListeActualites listAcu = new ListeActualites();
+                listAcu.getFormListeActualites().show();
             }
         });
 
